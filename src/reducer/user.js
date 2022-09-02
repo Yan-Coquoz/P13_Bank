@@ -1,4 +1,4 @@
-import {} from "../actions/user";
+import { CHANGE_FIELD } from "../actions/user";
 
 const initialState = {
   username: "",
@@ -9,7 +9,12 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case 1:
+    case CHANGE_FIELD:
+      console.log(action);
+      return {
+        ...state,
+        [action.key]: action.value,
+      };
     default:
       return state;
   }

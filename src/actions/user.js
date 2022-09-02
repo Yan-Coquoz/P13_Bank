@@ -1,5 +1,7 @@
-export const UN_EXEMPLE = "UN_EXEMPLE";
+export const CHANGE_FIELD = "CHANGE_FIELD";
 
-export const unExemple = () => ({
-  type: UN_EXEMPLE,
+export const changeField = (key, value) => ({
+  type: CHANGE_FIELD,
+  key,
+  value,
 });

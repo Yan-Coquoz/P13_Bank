@@ -1,11 +1,12 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
+import logout from "../../assets/sign_out.svg";
 import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
-const Header = () => {
+const Header = ({ username, isLogged }) => {
   return (
     <nav className="header__nav">
       <div className="header__nav-logo">
@@ -19,13 +20,30 @@ const Header = () => {
         </Link>
       </div>
       <div className="header__nav__item">
-        <Link to="/login">
-          <img src={user} alt="user icon" className="user_icon" /> Sign in
-        </Link>
+        {!isLogged ? (
+          <Link to="/login">
+            <img src={user} alt="user icon" className="user_icon" />
+            Sign in
+          </Link>
+        ) : (
+          <>
+            <Link to="/">
+              <img src={user} alt="user icon" className="user_icon" />
+              {username}
+            </Link>
+            <Link to="/">
+              <img src={logout} alt="Logout icon" className="user_icon" /> Sign
+              Out
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
 };
 
-//  Header.propTypes = {};
+Header.propTypes = {
+  username: PropTypes.string,
+  isLogged: PropTypes.bool,
+};
 export default Header;
