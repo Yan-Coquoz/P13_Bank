@@ -19,3 +19,13 @@ export function checkImage(src) {
     return chat;
   }
 }
+
+/**
+ * It takes a string, capitalizes the first letter, and then lowercases the rest of the string
+ * @param {string} str - The string to be converted.
+ * @returns {string} The first character of the string is converted to uppercase and the rest of the string is
+ * converted to lowercase.
+ */
+export function fromLowerToUpperCase(str) {
+  return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+}

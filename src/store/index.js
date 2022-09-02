@@ -3,6 +3,7 @@ import { applyMiddleware, compose, legacy_createStore } from "redux";
 
 import reducer from "../reducer";
 
+console.log(reducer);
 const composeEnhancers =
   (typeof window !== "undefined" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||

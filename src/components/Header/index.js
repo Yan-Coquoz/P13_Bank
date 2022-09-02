@@ -19,7 +19,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="header__nav__item">
-        <Link to="/">
+        <Link to="/login">
           <img src={user} alt="user icon" className="user_icon" /> Sign in
         </Link>
       </div>
