@@ -6,7 +6,6 @@ import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
 const Header = () => {
-  // écrire le code ici
   return (
     <nav className="header__nav">
       <div className="header__nav-logo">
@@ -16,11 +15,12 @@ const Header = () => {
             alt="Argent Bank Logo"
             className="header__nav-logo__image"
           />
+          <h1 className="sr-only">Argent Bank</h1>
         </Link>
       </div>
       <div className="header__nav__item">
         <Link to="/">
-          <img src={user} alt="user icon" className="user-icon" /> Sign in
+          <img src={user} alt="user icon" className="user_icon" /> Sign in
         </Link>
       </div>
     </nav>
