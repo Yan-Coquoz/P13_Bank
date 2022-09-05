@@ -44,3 +44,18 @@ En plus des scripts natif de CRA, il y a :
 
 - `clean`     supprime les dossiers build, dist et docs.
 - `clean:all` supprime les dossiers node modules et build, dist ainsi que le fichier package-lock.json.
+
+## Back
+
+[Lien Github](https://github.com/Yan-Coquoz/Project-13-Bank-API)
+Veiller à bien lancer le back et le serveur.  
+
+```bash
+# Start local dev server
+npm run dev:server
+
+# Populate database with two users
+npm run populate-db
+```
+
+Les routes Back sont disponible [ici => swagger](http://localhost:3001/api-docs/#/)

@@ -11,9 +11,9 @@ import "./style.scss";
  */
 const Input = ({ type, label, onChange, value }) => {
   const handleChange = (evt) => {
-    console.log("key: ", evt.target.value, " value :", label);
+    // console.log("key: ", evt.target.value, " value :", label);
     const value = evt.target.value;
-    onChange(value, label);
+    onChange(label, value);
   };
   return (
     <div className="input-wrapper">
