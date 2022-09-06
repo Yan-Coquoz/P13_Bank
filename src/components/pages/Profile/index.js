@@ -1,6 +1,5 @@
 import React from "react";
 // import PropTypes from "prop-types";
-// import Button from "../../Button";
 import Welcome from "../../Welcome";
 import Account from "../../Account";
 import "./style.scss";

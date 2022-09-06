@@ -2,6 +2,9 @@ import { CHANGE_FIELD } from "../actions/user";
 
 const initialState = {
   username: "",
+  firstName: "",
+  lastName: "",
+  email: "",
   password: "",
   isLogged: false,
   toRemember: false,

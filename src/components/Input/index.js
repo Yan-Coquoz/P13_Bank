@@ -6,14 +6,17 @@ import "./style.scss";
 /**
  * @prop   {String}  type   Type de l'input
  * @prop   {String}  label  Contenu du label et propriété htmlFor ainsi que l'id de l'input
+ * @prop   {function} onChange initie l'action
+ * @prop   {String}  value valeur d'entree de l'input
+ * @prop   {String}  name identifiant de l'input
  *
  * @return  {React.ReactElement} une div avec un label et un input
  */
-const Input = ({ type, label, onChange, value }) => {
+const Input = ({ type, label, onChange, value, name }) => {
   const handleChange = (evt) => {
-    // console.log("key: ", evt.target.value, " value :", label);
+    // console.log("key: ", evt.target.value, " value :", name);
     const value = evt.target.value;
-    onChange(label, value);
+    onChange(name, value);
   };
   return (
     <div className="input-wrapper">
@@ -22,7 +25,7 @@ const Input = ({ type, label, onChange, value }) => {
         type={type}
         id={label}
         required
-        name={label}
+        name={name}
         onChange={handleChange}
         value={value}
       />
@@ -35,6 +38,7 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.any,
+  name: PropTypes.string.isRequired,
 };
 Input.defaultProps = {
   require: false,
