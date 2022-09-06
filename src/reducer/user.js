@@ -1,4 +1,5 @@
-import { CHANGE_FIELD } from "../actions/user";
+// @ts-nocheck
+import { CHANGE_FIELD, REFRESH_DATAS } from "../actions/user";
 
 const initialState = {
   username: "",
@@ -8,16 +9,29 @@ const initialState = {
   password: "",
   isLogged: false,
   toRemember: false,
+  id: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_FIELD:
-      // console.log(action);
       return {
         ...state,
         [action.key]: action.value,
       };
+    case REFRESH_DATAS: {
+      const { firstName, id, lastName, email } = { ...action.payload.body };
+
+      return {
+        ...state,
+        isLogged: action.payload.status === 200 ? true : false,
+        firstName,
+        id,
+        lastName,
+        email,
+        password: "",
+      };
+    }
     default:
       return state;
   }

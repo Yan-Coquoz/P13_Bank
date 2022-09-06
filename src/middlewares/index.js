@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Api from "../API";
-import { SEND_LOGIN_FORM } from "../actions/user";
+import { SEND_LOGIN_FORM, refreshDatas } from "../actions/user";
 
 const user = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -12,22 +12,29 @@ const user = (store) => (next) => async (action) => {
           password: action.payload.password,
         })
           .then((rep) => {
-            console.log(rep);
             return rep.data;
           })
           .catch((erreur) => console.log("erreur =>", erreur));
-        console.log(logUser);
         if (logUser.status === 200) {
           localStorage.setItem("token", logUser.body.token);
-          // passages des données dans le store
-          // email, password, status => (isLogged)
+
+          try {
+            const getCredentials = await Api.post("/user/profile").then(
+              (res) => res.data,
+            );
+            console.log(getCredentials);
+            const userDatas = refreshDatas(getCredentials);
+            store.dispatch(userDatas);
+          } catch (error) {
+            return error;
+          }
         }
       } catch (error) {
         return error;
       }
-
       break;
     }
+
     default:
       next(action);
   }
