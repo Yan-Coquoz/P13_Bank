@@ -1,6 +1,10 @@
 export const CHANGE_FIELD = "CHANGE_FIELD";
 export const SEND_LOGIN_FORM = "SEND_LOGIN_FORM";
-export const REFRESH_DATAS = "REFRESH_DATAS";
+export const USER_CREDENTIAL = "USER_CREDENTIAL";
+export const GET_ERROR_MESSAGE = "GET_ERROR_MESSAGE";
+export const SET_LOGIN_DATAS = "SET_LOGIN_DATAS";
+export const HANDLE_CHECKED = "HANDLE_CHECKED";
+export const DISCONNECT = "DISCONNECT";
 
 export const changeField = (key, value) => ({
   type: CHANGE_FIELD,
@@ -13,7 +17,25 @@ export const sendLoginForm = (payload) => ({
   payload,
 });
 
-export const refreshDatas = (payload) => ({
-  type: REFRESH_DATAS,
+export const userCedential = (payload) => ({
+  type: USER_CREDENTIAL,
   payload,
+});
+
+export const getErrorMessage = (payload) => ({
+  type: GET_ERROR_MESSAGE,
+  payload,
+});
+
+export const setLoginDatas = (payload) => ({
+  type: SET_LOGIN_DATAS,
+  payload,
+});
+
+export const handleChecked = (payload) => ({
+  type: HANDLE_CHECKED,
+  payload,
+});
+export const disconnect = () => ({
+  type: DISCONNECT,
 });

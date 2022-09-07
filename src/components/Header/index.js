@@ -6,7 +6,11 @@ import logout from "../../assets/sign_out.svg";
 import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
-const Header = ({ username, isLogged }) => {
+const Header = ({ username, isLogged, disconnect, id }) => {
+  function handleDisconnect() {
+    disconnect();
+  }
+
   return (
     <nav className="header__nav">
       <div className="header__nav-logo">
@@ -27,11 +31,11 @@ const Header = ({ username, isLogged }) => {
           </Link>
         ) : (
           <>
-            <Link to="/">
+            <Link to={`/user/${id}`}>
               <img src={user} alt="user icon" className="user_icon" />
               {username}
             </Link>
-            <Link to="/">
+            <Link to="/" onClick={handleDisconnect}>
               <img src={logout} alt="Logout icon" className="user_icon" /> Sign
               Out
             </Link>
@@ -45,5 +49,10 @@ const Header = ({ username, isLogged }) => {
 Header.propTypes = {
   username: PropTypes.string,
   isLogged: PropTypes.bool,
+  disconnect: PropTypes.func,
+  id: PropTypes.string,
+};
+Header.defaultProps = {
+  id: "",
 };
 export default Header;

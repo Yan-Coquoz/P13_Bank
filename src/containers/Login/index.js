@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 import Login from "../../components/pages/Login";
 import { sendLoginForm } from "../../actions/user";
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isLogged: state.user.isLogged,
+  email: state.user.email,
+  password: state.user.password,
+  id: state.user.id,
+  errorStatus: state.user.errorStatus,
+  errorMSG: state.user.errorMSG,
+  remember: state.user.toRemember,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   sendLoginForm: (payload) => {

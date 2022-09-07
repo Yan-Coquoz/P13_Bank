@@ -14,10 +14,10 @@ import "./style.scss";
  */
 const Input = ({ type, label, onChange, value, name }) => {
   const handleChange = (evt) => {
-    // console.log("key: ", evt.target.value, " value :", name);
-    const value = evt.target.value;
-    onChange(name, value);
+    const inputValue = evt.target.value;
+    onChange(name, inputValue);
   };
+
   return (
     <div className="input-wrapper">
       <label htmlFor={label}>{fromLowerToUpperCase(label)}</label>
@@ -37,8 +37,8 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  value: PropTypes.any,
   name: PropTypes.string.isRequired,
+  value: PropTypes.any,
 };
 Input.defaultProps = {
   require: false,

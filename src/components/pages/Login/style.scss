@@ -18,3 +18,12 @@
     width: 1.2rem;
   }
 }
+
+.error_login {
+  color: red;
+  font-weight: bold;
+  display: none;
+  &.active {
+    display: block;
+  }
+}
