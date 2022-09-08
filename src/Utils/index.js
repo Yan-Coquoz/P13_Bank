@@ -21,13 +21,15 @@ export function checkImage(src) {
 }
 
 /**
- * Convertit le premier caractère d'une chaîne en majuscule et le reste en minuscule.
+ * Si la chaîne n'est pas vide, Convertit le premier caractère d'une chaîne en majuscule et le reste en minuscule.
  * @param {String} str - Chaîne à convertir.
  * @returns {String} Le premier caractère de la chaîne est converti en majuscule et le reste de la chaîne est
  * converti en minuscule.
  */
 export function fromLowerToUpperCase(str) {
-  return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+  if (str.length > 0) {
+    return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+  }
 }
 
 /**

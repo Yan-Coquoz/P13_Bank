@@ -1,4 +1,45 @@
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formulaire_container {
+  display: none;
+  &.active {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 2rem;
+    width: 450px;
+  }
+
+  &__bloc-input {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    & label {
+      display: none;
+    }
+    & input {
+      margin: 0;
+    }
+  }
+  &__bloc-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    & button {
+      width: 100px;
+    }
+  }
 }

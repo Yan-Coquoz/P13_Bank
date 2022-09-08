@@ -5,12 +5,13 @@ import {
   GET_ERROR_MESSAGE,
   SET_LOGIN_DATAS,
   DISCONNECT,
+  ONLY_DISCONNECT,
 } from "../actions/user";
 
 const initialState = {
-  username: "",
   firstName: "",
   lastName: "",
+  username: "",
   email: "",
   password: "",
   isLogged: false,
@@ -18,6 +19,7 @@ const initialState = {
   id: "",
   errorMSG: "",
   errorStatus: null,
+  status: null,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -37,6 +39,7 @@ const reducer = (state = initialState, action = {}) => {
         password: "",
         errorMSG: "",
         errorStatus: null,
+        status: action.response.status,
       };
     }
 
@@ -66,11 +69,15 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case DISCONNECT: {
-      if (initialState.toRemember) {
-        return {
-          ...state,
-        };
-      }
+      console.log("disco");
+      return {
+        ...state,
+        isLogged: false,
+      };
+    }
+
+    case ONLY_DISCONNECT: {
+      console.log("only");
       return {
         ...state,
         id: "",
@@ -78,6 +85,7 @@ const reducer = (state = initialState, action = {}) => {
         firstName: "",
         username: "",
         lastName: "",
+        status: null,
         isLogged: false,
         toRemember: false,
       };

@@ -1,18 +1,18 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Button from "../Button";
 import "./style.scss";
 
-const Account = () => {
+const Account = ({ title, amount, deal, type }) => {
   return (
     <section className="account">
       <div className="account__content-wrapper">
         <h3 className="account__content-wrapper__title">
-          Argent Bank Checking (x8349)
+          Argent Bank {title} (x{deal})
         </h3>
-        <p className="account__content-wrapper__amount">$2,082.79</p>
+        <p className="account__content-wrapper__amount">${amount}</p>
         <p className="account__content-wrapper__amount-description">
-          Available Balance
+          {type} Balance
         </p>
       </div>
       <div className="account-content-wrapper cta">
@@ -26,5 +26,10 @@ const Account = () => {
   );
 };
 
-//  Account.propTypes = {};
+Account.propTypes = {
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  deal: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+};
 export default Account;

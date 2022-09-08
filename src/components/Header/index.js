@@ -6,9 +6,20 @@ import logout from "../../assets/sign_out.svg";
 import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
-const Header = ({ username, isLogged, disconnect, id }) => {
+const Header = ({
+  username,
+  isLogged,
+  disconnect,
+  onlyDisconnect,
+  id,
+  remember,
+}) => {
   function handleDisconnect() {
-    disconnect();
+    if (remember) {
+      disconnect(remember);
+    } else {
+      onlyDisconnect();
+    }
   }
 
   return (
@@ -50,9 +61,12 @@ Header.propTypes = {
   username: PropTypes.string,
   isLogged: PropTypes.bool,
   disconnect: PropTypes.func,
+  onlyDisconnect: PropTypes.func,
   id: PropTypes.string,
+  remember: PropTypes.bool.isRequired,
 };
 Header.defaultProps = {
   id: "",
+  remember: false,
 };
 export default Header;

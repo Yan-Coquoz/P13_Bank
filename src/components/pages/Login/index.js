@@ -21,6 +21,8 @@ const Login = ({
   checked,
   errorStatus,
   errorMSG,
+  status,
+  getUserCredentials,
 }) => {
   const [log, setLog] = useState(isLogged);
   const [errStatus, setErrStatus] = useState(errorStatus);
@@ -29,7 +31,7 @@ const Login = ({
 
   const handleSendForm = (evt) => {
     evt.preventDefault();
-    const email = evt.target[0].value;
+    const email = evt.target[0].value.toLowerCase();
     const password = evt.target[1].value;
     const remember = evt.target[2].checked;
 
@@ -40,11 +42,12 @@ const Login = ({
 
   // redirection
   useEffect(() => {
+    if (status === 200) getUserCredentials();
     setLog(isLogged);
     if (log && id.length > 0) {
       navigate(`/user/${id}`, { replace: true });
     }
-  }, [isLogged, log]);
+  }, [isLogged, log, status]);
 
   useEffect(() => {
     setErrStatus(errorStatus);
@@ -72,6 +75,7 @@ const Login = ({
             onChange={changeField}
             name={"email"}
             value={email}
+            placeholder="votre email"
           />
           <Input
             type="password"
@@ -79,6 +83,7 @@ const Login = ({
             onChange={changeField}
             name="password"
             value={password}
+            placeholder="mot de passe"
           />
           <Checkbox
             name={"toRemember"}
@@ -103,5 +108,10 @@ Login.propTypes = {
   errorStatus: PropTypes.number,
   errorMSG: PropTypes.string,
   checked: PropTypes.bool,
+  status: PropTypes.number,
+  getUserCredentials: PropTypes.func,
+};
+Login.defaultProps = {
+  status: null,
 };
 export default Login;

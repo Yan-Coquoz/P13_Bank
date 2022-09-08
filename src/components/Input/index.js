@@ -12,7 +12,7 @@ import "./style.scss";
  *
  * @return  {React.ReactElement} une div avec un label et un input
  */
-const Input = ({ type, label, onChange, value, name }) => {
+const Input = ({ type, label, onChange, value, name, placeholder }) => {
   const handleChange = (evt) => {
     const inputValue = evt.target.value;
     onChange(name, inputValue);
@@ -28,6 +28,7 @@ const Input = ({ type, label, onChange, value, name }) => {
         name={name}
         onChange={handleChange}
         value={value}
+        placeholder={placeholder}
       />
     </div>
   );
@@ -35,12 +36,14 @@ const Input = ({ type, label, onChange, value, name }) => {
 
 Input.propTypes = {
   type: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   value: PropTypes.any,
+  label: PropTypes.string,
 };
 Input.defaultProps = {
   require: false,
+  label: "",
 };
 export default Input;
