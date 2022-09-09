@@ -6,7 +6,8 @@ import {
   SET_LOGIN_DATAS,
   DISCONNECT,
   ONLY_DISCONNECT,
-  CLEAN_ERROR_MESSAGE,
+  CLEAN_MESSAGE,
+  UPDATE_IDENTITY,
 } from "../actions/user";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   errorMSG: "",
   errorStatus: null,
   status: null,
+  validationMessage: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -57,6 +59,7 @@ const reducer = (state = initialState, action = {}) => {
         errorStatus: null,
       };
     }
+
     case GET_ERROR_MESSAGE: {
       const { message, status } = { ...action.payload };
       return {
@@ -67,12 +70,12 @@ const reducer = (state = initialState, action = {}) => {
         id: "",
       };
     }
+
     case DISCONNECT: {
       return {
         ...state,
         isLogged: false,
         id: "",
-
         firstName: "",
         lastName: "",
         status: null,
@@ -80,7 +83,7 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ONLY_DISCONNECT: {
-      localStorage.removeItem("token");
+      localStorage.clear();
       return {
         ...state,
         id: "",
@@ -92,13 +95,24 @@ const reducer = (state = initialState, action = {}) => {
         toRemember: false,
       };
     }
-    case CLEAN_ERROR_MESSAGE: {
+
+    case CLEAN_MESSAGE: {
       return {
         ...state,
         errorMSG: "",
         errorStatus: null,
+        validationMessage: "",
       };
     }
+
+    case UPDATE_IDENTITY: {
+      return {
+        ...state,
+        status: action.payload.status,
+        validationMessage: action.payload.message,
+      };
+    }
+
     default:
       return state;
   }

@@ -26,7 +26,7 @@ const Login = ({
   errorMSG,
   status,
   getUserCredentials,
-  cleanErrorMessage,
+  cleanMessage,
 }) => {
   const [log, setLog] = useState(false);
   const [errStatus, setErrStatus] = useState(null);
@@ -67,7 +67,7 @@ const Login = ({
 
       timer = setTimeout(() => {
         span.classList.remove("active");
-        cleanErrorMessage();
+        cleanMessage();
       }, 2000);
       return () => clearTimeout(timer);
     }
@@ -122,7 +122,7 @@ Login.propTypes = {
   changeField: PropTypes.func,
   sendLoginForm: PropTypes.func,
   getUserCredentials: PropTypes.func,
-  cleanErrorMessage: PropTypes.func,
+  cleanMessage: PropTypes.func,
 };
 Login.defaultProps = {
   status: null,

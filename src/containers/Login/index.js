@@ -3,7 +3,7 @@ import Login from "../../components/pages/Login";
 import {
   sendLoginForm,
   getUserCredentials,
-  cleanErrorMessage,
+  cleanMessage,
 } from "../../actions/user";
 
 const mapStateToProps = (state) => ({
@@ -26,8 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = getUserCredentials();
     dispatch(action);
   },
-  cleanErrorMessage: () => {
-    const action = cleanErrorMessage();
+  cleanMessage: () => {
+    const action = cleanMessage();
     dispatch(action);
   },
 });
