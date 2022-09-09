@@ -10,7 +10,7 @@ import {
 const user = (store) => (next) => async (action) => {
   switch (action.type) {
     case SEND_LOGIN_FORM: {
-      localStorage.removeItem("token");
+      localStorage.clear();
       try {
         const logUser = await Api.post("/user/login", {
           email: action.payload.email,

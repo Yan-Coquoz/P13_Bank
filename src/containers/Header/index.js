@@ -5,7 +5,7 @@ import { disconnect, onlyDisconnect } from "../../actions/user";
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
-  username: state.user.username,
+  firstName: state.user.firstName,
   id: state.user.id,
   remember: state.user.toRemember,
 });

@@ -7,7 +7,7 @@ import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
 const Header = ({
-  username,
+  firstName,
   isLogged,
   disconnect,
   onlyDisconnect,
@@ -34,6 +34,7 @@ const Header = ({
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
       </div>
+      {/* Gestion au token */}
       <div className="header__nav__item">
         {!isLogged ? (
           <Link to="/login">
@@ -44,7 +45,7 @@ const Header = ({
           <>
             <Link to={`/user/${id}`}>
               <img src={user} alt="user icon" className="user_icon" />
-              {username}
+              {firstName}
             </Link>
             <Link to="/" onClick={handleDisconnect}>
               <img src={logout} alt="Logout icon" className="user_icon" /> Sign
@@ -58,7 +59,7 @@ const Header = ({
 };
 
 Header.propTypes = {
-  username: PropTypes.string,
+  firstName: PropTypes.string,
   isLogged: PropTypes.bool,
   disconnect: PropTypes.func,
   onlyDisconnect: PropTypes.func,

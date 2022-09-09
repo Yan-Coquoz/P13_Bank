@@ -3,14 +3,17 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Input from "../../../containers/Input";
-import Checkbox from "../../Checkbox";
+import Checkbox from "../../../containers/CheckBox";
 import Button from "../../Button";
 import user from "../../../assets/user_bank.svg";
 import { checkEmail } from "../../../Utils";
 import "./style.scss";
 
-// TODO faire la réponse d'API en cas d'erreur
-
+/**
+ * C'est un composant fonctionnel qui rend un formulaire pour connecter un utilisateur
+ *
+ * @return  {React.ReactElement}
+ */
 const Login = ({
   changeField,
   sendLoginForm,
@@ -23,9 +26,11 @@ const Login = ({
   errorMSG,
   status,
   getUserCredentials,
+  cleanErrorMessage,
 }) => {
-  const [log, setLog] = useState(isLogged);
-  const [errStatus, setErrStatus] = useState(errorStatus);
+  const [log, setLog] = useState(false);
+  const [errStatus, setErrStatus] = useState(null);
+  const [local, setLocal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,12 +47,16 @@ const Login = ({
 
   // redirection
   useEffect(() => {
-    if (status === 200) getUserCredentials();
+    setLocal(!!localStorage.getItem("token"));
     setLog(isLogged);
-    if (log && id.length > 0) {
-      navigate(`/user/${id}`, { replace: true });
+
+    if (local && status === 200) {
+      getUserCredentials();
+      if (log && id.length > 0) {
+        navigate(`/user/${id}`, { replace: true });
+      }
     }
-  }, [isLogged, log, status]);
+  }, [][(log, local)]);
 
   useEffect(() => {
     setErrStatus(errorStatus);
@@ -55,13 +64,14 @@ const Login = ({
     if (typeof errStatus === "number") {
       span.classList.add("active");
       let timer;
-      // FIXME faire un message d'erreur a chaque mauvaise tentative de connection
+
       timer = setTimeout(() => {
         span.classList.remove("active");
+        cleanErrorMessage();
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [errorStatus, errStatus, errorMSG]);
+  }, [][(errorStatus, errStatus, errorMSG)]);
 
   return (
     <div className="main bg-dark">
@@ -75,7 +85,8 @@ const Login = ({
             onChange={changeField}
             name={"email"}
             value={email}
-            placeholder="votre email"
+            placeholder="email"
+            focus={true}
           />
           <Input
             type="password"
@@ -83,12 +94,13 @@ const Login = ({
             onChange={changeField}
             name="password"
             value={password}
-            placeholder="mot de passe"
+            placeholder="password"
           />
           <Checkbox
             name={"toRemember"}
             onChange={changeField}
-            value={checked}
+            // value={checked}
+            checked={checked}
           />
           {((<br />), (<span className="error_login">{errorMSG} </span>))}
           <Button nameClass="button" title="Sign In" type="submit" />
@@ -99,17 +111,18 @@ const Login = ({
 };
 
 Login.propTypes = {
-  changeField: PropTypes.func,
-  sendLoginForm: PropTypes.func,
-  isLogged: PropTypes.bool,
   id: PropTypes.string,
   email: PropTypes.string,
   password: PropTypes.string,
-  errorStatus: PropTypes.number,
   errorMSG: PropTypes.string,
+  isLogged: PropTypes.bool,
   checked: PropTypes.bool,
+  errorStatus: PropTypes.number,
   status: PropTypes.number,
+  changeField: PropTypes.func,
+  sendLoginForm: PropTypes.func,
   getUserCredentials: PropTypes.func,
+  cleanErrorMessage: PropTypes.func,
 };
 Login.defaultProps = {
   status: null,

@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import Login from "../../components/pages/Login";
-import { sendLoginForm, getUserCredentials } from "../../actions/user";
+import {
+  sendLoginForm,
+  getUserCredentials,
+  cleanErrorMessage,
+} from "../../actions/user";
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
@@ -20,6 +24,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserCredentials: () => {
     const action = getUserCredentials();
+    dispatch(action);
+  },
+  cleanErrorMessage: () => {
+    const action = cleanErrorMessage();
     dispatch(action);
   },
 });

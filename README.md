@@ -58,4 +58,4 @@ npm run dev:server
 npm run populate-db
 ```
 
-Les routes Back sont disponible [ici => swagger](http://localhost:3001/api-docs/#/)
+Les routes Back sont disponible [ici => swagger](http://localhost:3001/api-docs/)

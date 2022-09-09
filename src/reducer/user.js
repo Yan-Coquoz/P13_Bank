@@ -6,12 +6,12 @@ import {
   SET_LOGIN_DATAS,
   DISCONNECT,
   ONLY_DISCONNECT,
+  CLEAN_ERROR_MESSAGE,
 } from "../actions/user";
 
 const initialState = {
   firstName: "",
   lastName: "",
-  username: "",
   email: "",
   password: "",
   isLogged: false,
@@ -49,7 +49,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: action.payload.status === 200 ? true : false,
-        username: action.payload.body.firstName,
         firstName,
         id,
         lastName,
@@ -69,25 +68,35 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
     case DISCONNECT: {
-      console.log("disco");
       return {
         ...state,
         isLogged: false,
+        id: "",
+
+        firstName: "",
+        lastName: "",
+        status: null,
       };
     }
 
     case ONLY_DISCONNECT: {
-      console.log("only");
+      localStorage.removeItem("token");
       return {
         ...state,
         id: "",
         email: "",
         firstName: "",
-        username: "",
         lastName: "",
         status: null,
         isLogged: false,
         toRemember: false,
+      };
+    }
+    case CLEAN_ERROR_MESSAGE: {
+      return {
+        ...state,
+        errorMSG: "",
+        errorStatus: null,
       };
     }
     default:

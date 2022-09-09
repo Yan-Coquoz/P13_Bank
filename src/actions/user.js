@@ -7,6 +7,7 @@ export const HANDLE_CHECKED = "HANDLE_CHECKED";
 export const DISCONNECT = "DISCONNECT";
 export const ONLY_DISCONNECT = "ONLY_DISCONNECT";
 export const GET_USER_CREDENTIALS = "GET_USER_CREDENTIALS";
+export const CLEAN_ERROR_MESSAGE = "CLEAN_ERROR_MESSAGE";
 
 export const changeField = (key, value) => ({
   type: CHANGE_FIELD,
@@ -51,4 +52,8 @@ export const disconnect = (payload) => ({
 
 export const onlyDisconnect = () => ({
   type: ONLY_DISCONNECT,
+});
+
+export const cleanErrorMessage = () => ({
+  type: CLEAN_ERROR_MESSAGE,
 });

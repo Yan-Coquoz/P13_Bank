@@ -9,10 +9,12 @@ import "./style.scss";
  * @prop   {function} onChange initie l'action
  * @prop   {String}  value valeur d'entree de l'input
  * @prop   {String}  name identifiant de l'input
+ * @prop   {String}  placeholder ce qui est attendu dans le champs
+ * @prop   {Boolean}  focus autofocus
  *
  * @return  {React.ReactElement} une div avec un label et un input
  */
-const Input = ({ type, label, onChange, value, name, placeholder }) => {
+const Input = ({ type, label, onChange, value, name, placeholder, focus }) => {
   const handleChange = (evt) => {
     const inputValue = evt.target.value;
     onChange(name, inputValue);
@@ -29,6 +31,7 @@ const Input = ({ type, label, onChange, value, name, placeholder }) => {
         onChange={handleChange}
         value={value}
         placeholder={placeholder}
+        autoFocus={focus}
       />
     </div>
   );
@@ -41,9 +44,11 @@ Input.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.any,
   label: PropTypes.string,
+  focus: PropTypes.bool,
 };
 Input.defaultProps = {
   require: false,
   label: "",
+  focus: false,
 };
 export default Input;
