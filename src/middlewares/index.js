@@ -11,7 +11,7 @@ import {
 
 const user = (store) => (next) => async (action) => {
   const { email } = store.getState().user;
-
+  // const token = localStorage.getItem("token");
   switch (action.type) {
     case SEND_LOGIN_FORM: {
       localStorage.clear();
@@ -38,6 +38,8 @@ const user = (store) => (next) => async (action) => {
       break;
     }
     case GET_USER_CREDENTIALS: {
+      // const headers = { authorization: `Bearer ${token}` };
+      // console.log(headers);
       try {
         const getCredentials = await Api.post("/user/profile").then(
           (res) => res.data,

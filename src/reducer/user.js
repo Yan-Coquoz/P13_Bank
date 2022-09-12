@@ -83,6 +83,7 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ONLY_DISCONNECT: {
+      localStorage.removeItem("token");
       localStorage.clear();
       return {
         ...state,

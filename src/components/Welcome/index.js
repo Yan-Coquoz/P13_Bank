@@ -14,12 +14,14 @@ const Welcome = ({
 }) => {
   // const [isMessage, setIsMessage] = useState(false);
 
-  function handleOpenModale() {
-    document.querySelector(".formulaire_container").classList.toggle("active");
+  function handleRenderModale() {
+    if (firstName.length > 0) {
+      document
+        .querySelector(".formulaire_container")
+        .classList.toggle("active");
+    }
   }
-  function handleCloseModale() {
-    document.querySelector(".formulaire_container").classList.toggle("active");
-  }
+
   function handleSendForm(evt) {
     evt.preventDefault();
 
@@ -51,7 +53,7 @@ const Welcome = ({
         type="button"
         title="Edit Name"
         nameClass="edit-button"
-        onClick={handleOpenModale}
+        onClick={handleRenderModale}
       />
 
       <form className="formulaire_container" onSubmit={handleSendForm}>
@@ -76,7 +78,7 @@ const Welcome = ({
             type="button"
             title="Cancel"
             nameClass="edit-button"
-            onClick={handleCloseModale}
+            onClick={handleRenderModale}
           />
         </div>
       </form>
