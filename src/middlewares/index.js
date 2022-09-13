@@ -10,8 +10,6 @@ import {
 } from "../actions/user";
 
 const user = (store) => (next) => async (action) => {
-  const { email } = store.getState().user;
-  // const token = localStorage.getItem("token");
   switch (action.type) {
     case SEND_LOGIN_FORM: {
       localStorage.clear();
@@ -21,6 +19,8 @@ const user = (store) => (next) => async (action) => {
           password: action.payload.password,
         })
           .then((rep) => {
+            // le token est placé dans le localStorage
+            localStorage.setItem("token", rep.data.body.token);
             return rep.data;
           })
           .catch((erreur) => {
@@ -28,9 +28,8 @@ const user = (store) => (next) => async (action) => {
             store.dispatch(error_msg);
           });
         if (logUser.status === 200) {
-          localStorage.setItem("token", logUser.body.token);
-          const logUserdatas = setLoginDatas(action.payload, logUser);
-          store.dispatch(logUserdatas);
+          const response = setLoginDatas(action.payload, logUser);
+          store.dispatch(response);
         }
       } catch (error) {
         return error;
@@ -38,12 +37,15 @@ const user = (store) => (next) => async (action) => {
       break;
     }
     case GET_USER_CREDENTIALS: {
-      // const headers = { authorization: `Bearer ${token}` };
-      // console.log(headers);
+      const token = localStorage.getItem("token");
       try {
-        const getCredentials = await Api.post("/user/profile").then(
-          (res) => res.data,
-        );
+        const headers = { Authorization: `Bearer ${token}` };
+        const getCredentials = await Api.post(
+          "/user/profile",
+          {},
+          { headers },
+        ).then((res) => res.data);
+
         const response = userCredential(getCredentials);
         store.dispatch(response);
       } catch (error) {
@@ -53,12 +55,19 @@ const user = (store) => (next) => async (action) => {
     }
     case NEW_IDENTITY:
       {
+        const { email, firstName, lastName } = store.getState().user;
+        const token = localStorage.getItem("token");
+        const headers = { Authorization: `Bearer ${token}` };
         try {
-          const datas = await Api.put("/user/profile", {
-            email,
-            lastName: action.payload.lName,
-            firstName: action.payload.fName,
-          }).then((res) => res.data);
+          const datas = await Api.put(
+            "/user/profile",
+            {
+              email,
+              lastName,
+              firstName,
+            },
+            { headers },
+          ).then((res) => res.data);
 
           const response = upDateIdentity(datas);
           store.dispatch(response);

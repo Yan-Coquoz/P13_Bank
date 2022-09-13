@@ -34,6 +34,8 @@ const reducer = (state = initialState, action = {}) => {
 
     case SET_LOGIN_DATAS: {
       const { email, remember } = { ...action.payload };
+      // console.log("set_login_data", action.payload);
+      // console.log("set_login_data, réponse ", action.response);
       return {
         ...state,
         email,
@@ -85,6 +87,7 @@ const reducer = (state = initialState, action = {}) => {
     case ONLY_DISCONNECT: {
       localStorage.removeItem("token");
       localStorage.clear();
+
       return {
         ...state,
         id: "",
@@ -107,10 +110,13 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case UPDATE_IDENTITY: {
+      console.log(action.payload.body);
       return {
         ...state,
         status: action.payload.status,
         validationMessage: action.payload.message,
+        firstName: action.payload.body.firstName,
+        lastName: action.payload.body.lastName,
       };
     }
 

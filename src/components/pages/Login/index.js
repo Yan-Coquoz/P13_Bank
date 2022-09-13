@@ -36,6 +36,7 @@ const Login = ({
 
   const handleSendForm = (evt) => {
     evt.preventDefault();
+    evt.stopPropagation();
     const email = evt.target[0].value.toLowerCase();
     const password = evt.target[1].value;
     const remember = evt.target[2].checked;
@@ -44,7 +45,7 @@ const Login = ({
       sendLoginForm({ email, password, remember });
     }
   };
-
+  // TODO clean les inputs en cas de status 200
   // redirection
   useEffect(() => {
     setLocal(!!localStorage.getItem("token"));

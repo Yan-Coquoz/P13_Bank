@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { /*useState,*/ useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "../Button";
 import Input from "../../containers/Input";
@@ -12,8 +12,6 @@ const Welcome = ({
   message,
   cleanMessage,
 }) => {
-  // const [isMessage, setIsMessage] = useState(false);
-
   function handleRenderModale() {
     if (firstName.length > 0) {
       document
@@ -25,10 +23,10 @@ const Welcome = ({
   function handleSendForm(evt) {
     evt.preventDefault();
 
-    const fName = evt.target[0].value;
-    const lName = evt.target[1].value;
+    const f_Name = evt.target[0].value;
+    const l_Name = evt.target[1].value;
 
-    newIdentity({ fName, lName });
+    newIdentity({ f_Name, l_Name });
   }
   useEffect(() => {
     let time;
