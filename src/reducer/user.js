@@ -34,8 +34,7 @@ const reducer = (state = initialState, action = {}) => {
 
     case SET_LOGIN_DATAS: {
       const { email, remember } = { ...action.payload };
-      // console.log("set_login_data", action.payload);
-      // console.log("set_login_data, réponse ", action.response);
+
       return {
         ...state,
         email,
@@ -49,7 +48,7 @@ const reducer = (state = initialState, action = {}) => {
 
     case USER_CREDENTIAL: {
       const { firstName, id, lastName, email } = { ...action.payload.body };
-      // console.log(action.payload);
+
       return {
         ...state,
         isLogged: action.payload.status === 200 ? true : false,
@@ -110,7 +109,6 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case UPDATE_IDENTITY: {
-      console.log(action.payload.body);
       return {
         ...state,
         status: action.payload.status,

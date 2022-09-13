@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { connect } from "react-redux";
 import { changeField } from "../../actions/user";
 import Checkbox from "../../components/Checkbox";

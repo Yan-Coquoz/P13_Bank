@@ -45,7 +45,7 @@ const Login = ({
       sendLoginForm({ email, password, remember });
     }
   };
-  // TODO clean les inputs en cas de status 200
+
   // redirection
   useEffect(() => {
     setLocal(!!localStorage.getItem("token"));
@@ -100,7 +100,6 @@ const Login = ({
           <Checkbox
             name={"toRemember"}
             onChange={changeField}
-            // value={checked}
             checked={checked}
           />
           {((<br />), (<span className="error_login">{errorMSG} </span>))}

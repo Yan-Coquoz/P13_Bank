@@ -1,7 +1,7 @@
 import React from "react";
-// import PropTypes from "prop-types";
+
 import Welcome from "../../../containers/Welcome";
-import Account from "../../Account";
+import Account from "../../../containers/Account";
 import "./style.scss";
 
 const Profile = () => {
@@ -14,22 +14,24 @@ const Profile = () => {
         amount={"2,082.79"}
         deal={8349}
         type="Available"
+        linkId={1}
       />
       <Account
         title="Savings"
         type="Available"
         amount={"10,928.42"}
         deal={6712}
+        linkId={2}
       />
       <Account
         title="Credit Card"
         type="Current"
         amount={"184.30"}
         deal={8349}
+        linkId={3}
       />
     </div>
   );
 };
 
-//  Profile.propTypes = {};
 export default Profile;

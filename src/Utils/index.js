@@ -53,3 +53,20 @@ export function checkPassword(password) {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Z\d$@!%*?&_]{8,15}$/gim;
   return !!testPassword.test(password);
 }
+
+/**
+ * Il prend quatre arguments et renvoie un objet avec quatre propriétés
+ * @param {String} date - La date de la transaction
+ * @param {String} description - Le descriptif de l'opération
+ * @param {number} amount - Le montant d'argent qui a été dépensé ou reçu.
+ * @param {number} balance - Le solde du compte après la transaction.
+ * @returns Un objet avec les propriétés date, description, montant et solde.
+ */
+export function createData(date, description, amount, balance) {
+  return {
+    date,
+    description,
+    amount,
+    balance,
+  };
+}

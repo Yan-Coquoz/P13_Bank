@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import "./style.scss";
 
-const Account = ({ title, amount, deal, type }) => {
+const Account = ({ title, amount, deal, type, linkId }) => {
   return (
     <section className="account">
       <div className="account__content-wrapper">
@@ -16,11 +17,13 @@ const Account = ({ title, amount, deal, type }) => {
         </p>
       </div>
       <div className="account-content-wrapper cta">
-        <Button
-          nameClass="transaction-button"
-          title="View transactions"
-          type="button"
-        ></Button>
+        <Link to={`account/${linkId}`} className="account__link-button">
+          <Button
+            nameClass="transaction-button"
+            title="View transactions"
+            type="button"
+          ></Button>
+        </Link>
       </div>
     </section>
   );
@@ -31,5 +34,6 @@ Account.propTypes = {
   amount: PropTypes.string.isRequired,
   deal: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
+  linkId: PropTypes.number.isRequired,
 };
 export default Account;

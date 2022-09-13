@@ -1,3 +1,5 @@
+import { createData } from "../Utils";
+
 export const datas = [
   {
     image: "../assets/icon-chat.png",
@@ -16,4 +18,19 @@ export const datas = [
     texte:
       "We use top of the line encryption to make sure your data and money is always safe.",
   },
+];
+
+export const rows = [
+  createData("June 20th, 2020", "Golden Sun Backery", 5.0, 2082.79),
+  createData("June 20th, 2020", "Golden Sun Backery", 10.0, 2087.79),
+  createData("June 20th, 2020", "Golden Sun Backery", 20.0, 2097.79),
+  createData("June 20th, 2020", "Golden Sun Backery", 30.0, 2117.79),
+  createData("June 20th, 2020", "Golden Sun Backery", 40.0, 2147.79),
+  createData("June 20th, 2020", "Golden Sun Backery", 50.0, 2187.79),
+];
+export const tableHeaders = [
+  { name: "date" },
+  { name: "description" },
+  { name: "amount" },
+  { name: "balance" },
 ];
