@@ -9,11 +9,11 @@ const Account = ({ title, amount, deal, type, linkId }) => {
     <section className="account">
       <div className="account__content-wrapper">
         <h3 className="account__content-wrapper__title">
-          Argent Bank {title} (x{deal})
+          {"Argent Bank " + title} ({"x" + deal})
         </h3>
         <p className="account__content-wrapper__amount">${amount}</p>
         <p className="account__content-wrapper__amount-description">
-          {type} Balance
+          {type + " Balance"}
         </p>
       </div>
       <div className="account-content-wrapper cta">

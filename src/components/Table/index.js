@@ -80,9 +80,9 @@ function CollapsibleTable() {
               {tableHeaders.map((title, key) => {
                 return (
                   <TableCell
+                    key={key}
                     align="center"
                     style={{ fontWeight: "bold" }}
-                    key={key}
                   >
                     {title.name.toUpperCase()}
                   </TableCell>
@@ -91,8 +91,8 @@ function CollapsibleTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <Row key={row.name} row={row} />
+            {rows.map((row, key) => (
+              <Row key={key} row={row} />
             ))}
           </TableBody>
         </Table>

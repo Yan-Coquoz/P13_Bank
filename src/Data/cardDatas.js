@@ -34,3 +34,27 @@ export const tableHeaders = [
   { name: "amount" },
   { name: "balance" },
 ];
+
+export const dataAmounts = [
+  {
+    title: "Checking",
+    amount: "2,082.79",
+    deal: 8349,
+    type: "Available",
+    linkId: 1,
+  },
+  {
+    title: "Savings",
+    amount: "10,928.42",
+    deal: 67124,
+    type: "Available",
+    linkId: 2,
+  },
+  {
+    title: "Credit Card",
+    amount: "2,082.79",
+    deal: 5201,
+    type: "Current",
+    linkId: 3,
+  },
+];
