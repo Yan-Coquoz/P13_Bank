@@ -24,7 +24,6 @@ const Login = ({
   checked,
   errorStatus,
   errorMSG,
-  status,
   getUserCredentials,
   cleanMessage,
 }) => {
@@ -36,7 +35,7 @@ const Login = ({
 
   const handleSendForm = (evt) => {
     evt.preventDefault();
-    evt.stopPropagation();
+
     const email = evt.target[0].value.toLowerCase();
     const password = evt.target[1].value;
     const remember = evt.target[2].checked;
@@ -51,7 +50,7 @@ const Login = ({
     setLocal(!!localStorage.getItem("token"));
     setLog(isLogged);
 
-    if (local && status === 200) {
+    if (local && !errStatus) {
       getUserCredentials();
       if (log && id.length > 0) {
         navigate(`/user/${id}`, { replace: true });
@@ -59,13 +58,13 @@ const Login = ({
     }
   }, [][(log, local)]);
 
+  // mauvais identifiants
   useEffect(() => {
     setErrStatus(errorStatus);
     const span = document.querySelector(".error_login");
     if (typeof errStatus === "number") {
       span.classList.add("active");
       let timer;
-
       timer = setTimeout(() => {
         span.classList.remove("active");
         cleanMessage();
@@ -118,13 +117,10 @@ Login.propTypes = {
   isLogged: PropTypes.bool,
   checked: PropTypes.bool,
   errorStatus: PropTypes.number,
-  status: PropTypes.number,
   changeField: PropTypes.func,
   sendLoginForm: PropTypes.func,
   getUserCredentials: PropTypes.func,
   cleanMessage: PropTypes.func,
 };
-Login.defaultProps = {
-  status: null,
-};
+
 export default Login;
