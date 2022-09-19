@@ -16,6 +16,11 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { rows, tableHeaders } from "../../Data/cardDatas";
 import "./style.scss";
 
+/**
+ * @param   {Object}  props  C'est l'objet props qui est passé au composant.
+ *
+ * @return  {React.ReactElement}         Une ligne de tableau avec une ligne réductible.
+ */
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -68,6 +73,11 @@ Row.propTypes = {
   }).isRequired,
 };
 
+/**
+ * Il renvoie un div qui contient un tableau avec un en-tête de tableau et un corps de tableau
+ *
+ * @return  {React.ReactElement}
+ */
 function CollapsibleTable() {
   return (
     <div className="table_container">

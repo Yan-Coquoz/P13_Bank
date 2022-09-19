@@ -5,6 +5,18 @@ import Button from "../Button";
 import Input from "../../containers/Input";
 import "./style.scss";
 
+/**
+ * Il affiche un message de bienvenue avec le prénom et le nom de l'utilisateur, un bouton pour
+ * modifier le nom, un formulaire pour modifier le nom et un message de confirmation
+ *
+ * @param   {String}  firstName     prénom de l'utilisateur
+ * @param   {String}  lastName      nom de l'utilisateur
+ * @param   {Function}  newIdentity   fonction déclencheur de l’événement
+ * @param   {String}  message       message de confirmation de la prise en compte de la requête
+ * @param   {Function}  cleanMessage  fonction déclencheur de l’événement
+ *
+ * @return  {React.ReactElement}
+ */
 const Welcome = ({
   firstName,
   lastName,
@@ -12,6 +24,10 @@ const Welcome = ({
   message,
   cleanMessage,
 }) => {
+  /**
+   * Il vérifie si la variable firstName est vide ou non. S'il n'est pas vide, il ajoute la classe
+   * active au conteneur de formulaire
+   */
   function handleRenderModale() {
     if (firstName.length > 0) {
       document
@@ -20,14 +36,21 @@ const Welcome = ({
     }
   }
 
+  /**
+   * La fonction prend un événement comme argument, empêche l'action par défaut de l'événement,
+   * récupère les valeurs des première et deuxième entrées, puis appelle la fonction newIdentity avec
+   * les valeurs des première et deuxième entrées comme arguments
+   * @param {} evt - l'objet événement
+   */
   function handleSendForm(evt) {
     evt.preventDefault();
-
+    console.log(typeof evt);
     const f_Name = evt.target[0].value;
     const l_Name = evt.target[1].value;
 
     newIdentity({ f_Name, l_Name });
   }
+
   useEffect(() => {
     let time;
     const span = document.querySelector(".formulaire_container__confirmation");
@@ -38,6 +61,7 @@ const Welcome = ({
     }, 2000);
     return () => clearTimeout(time);
   });
+
   return (
     <div className="header">
       <h1>

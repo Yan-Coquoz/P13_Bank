@@ -3,6 +3,10 @@ import Feature from "../../Feature";
 
 import "./style.scss";
 
+/**
+ * Il renvoie un élément principal qui contient un div avec une classe de héros, une section avec un composant Feature
+ * @returns Un composant React.
+ */
 const Home = () => {
   return (
     <main>

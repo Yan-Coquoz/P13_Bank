@@ -4,6 +4,10 @@ import Account from "../../../containers/Account";
 import { dataAmounts } from "../../../Data/cardDatas";
 import "./style.scss";
 
+/**
+ * Il renvoie un div avec un composant Welcome et une liste de composants Account
+ * @returns Un div avec un composant de bienvenue et une liste de composants de compte.
+ */
 const Profile = () => {
   return (
     <div className="main bg-dark">

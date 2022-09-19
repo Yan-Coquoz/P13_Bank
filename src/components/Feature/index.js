@@ -4,6 +4,11 @@ import Card from "../Card";
 import { datas } from "../../Data/cardDatas";
 import "./style.scss";
 
+/**
+ * Il renvoie une section avec un titre et une liste de cartes
+ *
+ * @return  {React.ReactElement}
+ */
 const Feature = () => {
   return (
     <section className="features">

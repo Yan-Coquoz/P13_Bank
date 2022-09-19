@@ -14,6 +14,23 @@ import "./style.scss";
  *
  * @return  {React.ReactElement}
  */
+/**
+ * C'est un composant fonctionnel qui rend un formulaire pour connecter un utilisateur
+ *
+ * @param   {Boolean}  isLogged            Si l'utilisateur est connecté
+ * @param   {Sring}  email               Email de l'utilisateur
+ * @param   {Sring}  id                  Id de l'utilisateur
+ * @param   {Sring}  password            Mot de passe de l'utilisateur
+ * @param   {Boolean}  checked             Si l'utilisateur à coché l'option de rappelle des données
+ * @param   {Number}  errorStatus         Status code de l'erreur
+ * @param   {Sring}  errorMSG            Message d'erreur
+ * @param   {Function}  getUserCredentials  Met à jour les données utilisateur
+ * @param   {Function}  cleanMessage        Supprime le message d'erreur
+ * @param   {Function}  changeField         Retour de l'input
+ * @param   {Function}  sendLoginForm       Envoi les données dans l'API
+ *
+ * @return  {React.ReactElement}
+ */
 const Login = ({
   changeField,
   sendLoginForm,

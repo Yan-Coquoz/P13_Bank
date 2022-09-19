@@ -4,6 +4,8 @@ import { fromLowerToUpperCase } from "../../Utils";
 import "./style.scss";
 
 /**
+ * C'est une fonction qui renvoie un div avec une étiquette et une entrée
+ *
  * @prop   {String}  type   Type de l'input
  * @prop   {String}  label  Contenu du label et propriété htmlFor ainsi que l'id de l'input
  * @prop   {function} onChange initie l'action

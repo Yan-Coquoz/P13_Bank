@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import Button from "../Button";
 import "./style.scss";
 
+/**
+ * C'est une fonction qui renvoie une section avec un titre, un montant, une offre, un type et un
+ * linkId
+ * @prop {String} title Nom du compte
+ * @prop {String} amount Somme sur le compte
+ * @prop {Number} deal Nombre de transaction sur le compte
+ * @prop {String} type type de situation
+ * @prop {Number} linkId id du compte
+ * @returns {React.ReactElement}
+ */
 const Account = ({ title, amount, deal, type, linkId }) => {
   return (
     <section className="account">

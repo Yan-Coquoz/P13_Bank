@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import "./style.scss";
 /**
  *
- *  The Button function takes in two arguments, nameClass and title, and returns a button element with
- * the class name of nameClass and the text of title.
+ *  C'est une fonction qui renvoie un élément de bouton avec un className, un type et un gestionnaire
+ * d'événements onClick.
  * @prop   {String}  nameClass  contenu de l'attribut className
  * @prop   {String}  title      intitulé du bouton
  * @prop   {String}  type      type du bouton

@@ -6,6 +6,20 @@ import logout from "../../assets/sign_out.svg";
 import user from "../../assets/user_bank.svg";
 import "./style.scss";
 
+/**
+ * C'est une fonction qui renvoie un élément de navigation avec un logo et un lien vers la page de
+ * connexion si l'utilisateur n'est pas connecté, et un lien vers le profil de l'utilisateur et un lien
+ * pour se déconnecter si l'utilisateur est connecté
+ *
+ * @prop   {String}  firstName       prénom de l'utilisateur
+ * @prop   {Boolean}  isLogged        Si l'utilisateur est connecté
+ * @prop   {Function}  disconnect      Si l'utilisateur a choisi de garder sa session
+ * @prop   {Function}  onlyDisconnect  Si l'utilisateur à fermer sa session
+ * @prop   {String}  id              De l'utilisateur
+ * @prop   {Boolean}  remember        choix d'une session (ouverte / fermée)
+ *
+ * @return  {React.ReactElement}  Un élément de navigation avec un logo et un lien vers la page de connexion.
+ */
 const Header = ({
   firstName,
   isLogged,
@@ -59,12 +73,12 @@ const Header = ({
 };
 
 Header.propTypes = {
-  firstName: PropTypes.string,
-  isLogged: PropTypes.bool,
+  firstName: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  remember: PropTypes.bool.isRequired,
   disconnect: PropTypes.func,
   onlyDisconnect: PropTypes.func,
-  id: PropTypes.string,
-  remember: PropTypes.bool.isRequired,
 };
 Header.defaultProps = {
   id: "",

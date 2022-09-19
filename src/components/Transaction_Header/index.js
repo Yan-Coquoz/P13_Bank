@@ -4,6 +4,11 @@ import { useParams } from "react-router-dom";
 import "./style.scss";
 import { dataAmounts } from "../../Data/cardDatas";
 
+/**
+ * C'est un composant fonctionnel qui rend l'en-tête de la transaction
+ *
+ * @return  {React.ReactElement} Un composant fonctionnel qui renvoie une div avec un titre, un montant et un type.
+ */
 const Transaction_Header = () => {
   const id = useParams();
   const [data, setData] = useState(null);
