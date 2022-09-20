@@ -27,7 +27,7 @@ const Transaction_Header = () => {
       setGetData(false);
     }
   }, [id]);
-  console.log(data);
+
   return (
     <div className="h_transaction">
       {getdata && isData && (

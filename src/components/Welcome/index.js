@@ -44,7 +44,7 @@ const Welcome = ({
    */
   function handleSendForm(evt) {
     evt.preventDefault();
-    console.log(typeof evt);
+
     const f_Name = evt.target[0].value;
     const l_Name = evt.target[1].value;
 

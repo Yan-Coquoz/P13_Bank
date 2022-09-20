@@ -5,8 +5,8 @@ import Home from "components/pages/Home";
 import Profile from "components/pages/Profile";
 import Transaction from "components/pages/Transaction";
 import ErrorPage from "components/pages/ErrorPage";
-import Header from "../../containers/Header";
-import Login from "../../containers/Login";
+import Header from "containers/Header";
+import Login from "containers/Login";
 import "./App.scss";
 
 /**
