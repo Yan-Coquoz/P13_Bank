@@ -73,6 +73,8 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case DISCONNECT: {
+      sessionStorage.clear();
+      sessionStorage.removeItem("token");
       return {
         ...state,
         isLogged: false,
@@ -84,8 +86,8 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ONLY_DISCONNECT: {
-      localStorage.removeItem("token");
-      localStorage.clear();
+      sessionStorage.removeItem("token");
+      sessionStorage.clear();
 
       return {
         ...state,

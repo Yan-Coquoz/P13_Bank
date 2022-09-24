@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "components/Footer";
 import Home from "components/pages/Home";
-import Profile from "components/pages/Profile";
+import Profile from "containers/Profile";
 import Transaction from "components/pages/Transaction";
 import ErrorPage from "components/pages/ErrorPage";
 import Header from "containers/Header";

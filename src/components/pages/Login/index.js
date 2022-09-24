@@ -64,7 +64,7 @@ const Login = ({
 
   // redirection
   useEffect(() => {
-    setLocal(!!localStorage.getItem("token"));
+    setLocal(!!sessionStorage.getItem("token"));
     setLog(isLogged);
 
     if (local && !errStatus) {

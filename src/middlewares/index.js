@@ -12,15 +12,15 @@ import {
 const user = (store) => (next) => async (action) => {
   switch (action.type) {
     case SEND_LOGIN_FORM: {
-      localStorage.clear();
+      sessionStorage.clear();
       try {
         const logUser = await Api.post("/user/login", {
           email: action.payload.email,
           password: action.payload.password,
         })
           .then((rep) => {
-            // le token est placé dans le localStorage
-            localStorage.setItem("token", rep.data.body.token);
+            // le token est placé dans le sessionStorage
+            sessionStorage.setItem("token", rep.data.body.token);
             return rep.data;
           })
           .catch((erreur) => {
@@ -37,7 +37,7 @@ const user = (store) => (next) => async (action) => {
       break;
     }
     case GET_USER_CREDENTIALS: {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       try {
         const headers = { Authorization: `Bearer ${token}` };
         const getCredentials = await Api.post(
@@ -56,7 +56,7 @@ const user = (store) => (next) => async (action) => {
     case NEW_IDENTITY:
       {
         const { email, firstName, lastName } = store.getState().user;
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const headers = { Authorization: `Bearer ${token}` };
         try {
           const datas = await Api.put(

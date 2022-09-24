@@ -5,7 +5,21 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/Yan-Coquoz/P13_Bank)
 ![GitHub language count](https://img.shields.io/github/languages/count/Yan-Coquoz/P13_Bank)
 
-Créer avec CRA (Create-React-App).
+Créer avec CRA (Create-React-App)
+
+## Information générale
+
+Création d'une application avec un système d'authentification pour une banque
+
+---
+
+## Prérequis
+
+- Un éditeur de texte `VSCode, Vim, IntelliJ...`
+- [Node.js < v.16](https://nodejs.org/en/)
+- [Git](https://git-scm.com/)
+
+---
 
 - Lancement de l'application
 
@@ -33,7 +47,7 @@ yarn
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/react-router-dom)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/redux)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/react-redux)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/@reduxjs/toolkit)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/@mui/material)
 - ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/dev/sass)
 - ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/dev/prettier)
 - ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/dev/eslint) ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/dev/eslint-config-prettier) ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/Yan-Coquoz/P13_Bank/dev/eslint-plugin-react)
@@ -48,7 +62,9 @@ En plus des scripts natif de CRA, il y a :
 ## Back
 
 [Lien Github](https://github.com/Yan-Coquoz/Project-13-Bank-API)
-Veiller à bien lancer le back et le serveur.  
+
+- Lire le README
+- Veiller à bien lancer le back et le serveur.  
 
 ```bash
 # Start local dev server
